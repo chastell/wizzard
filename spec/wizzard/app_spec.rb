@@ -10,6 +10,9 @@ module Wizzard
         actual.headers['Content-Type'] == 'application/json;charset=utf-8' and
         JSON.parse(actual.body) == expected
       end
+      failure_message_for_should do |actual|
+        "expected #{actual.body} to JSON-decode to #{expected}"
+      end
     end
 
     include Rack::Test::Methods
