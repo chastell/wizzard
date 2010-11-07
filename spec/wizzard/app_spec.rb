@@ -6,9 +6,11 @@ module Wizzard
 
     RSpec::Matchers.define :json_decode_to do |expected|
       match do |actual|
-        actual.ok? and
-        actual.headers['Content-Type'] == 'application/json;charset=utf-8' and
-        JSON.parse(actual.body) == expected
+        [
+          actual.ok?,
+          actual.headers['Content-Type'] == 'application/json;charset=utf-8',
+          JSON.parse(actual.body) == expected,
+        ].all?
       end
       failure_message_for_should do |actual|
         "expected #{actual.body} to JSON-decode to #{expected}"
