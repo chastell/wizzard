@@ -53,6 +53,11 @@ module Wizzard
         last_response.should json_decode_to [false]
       end
 
+      it 'finds misspelled words in sentences according to the specified dictionary' do
+        get '/dicts/en/errors?text=a+sentence+wtih+smoe+errors'
+        last_response.should json_decode_to ['wtih', 'smoe']
+      end
+
     end
 
     context 'correcting queries' do

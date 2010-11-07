@@ -19,6 +19,10 @@ module Wizzard
       [Aspell.new(dict).list_misspelled([params['text']]).empty?].to_json
     end
 
+    get '/dicts/:dict/errors' do |dict|
+      Aspell.new(dict).list_misspelled([params['text']]).to_json
+    end
+
   end
 
 end
