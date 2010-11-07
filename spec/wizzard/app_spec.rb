@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Wizzard
 
   describe App do
@@ -15,6 +17,27 @@ module Wizzard
         last_response.should be_ok
         last_response.headers['Content-Type'].should == 'application/json;charset=utf-8'
         JSON.parse(last_response.body).should include 'en'
+      end
+
+    end
+
+    context 'spelling queries' do
+
+      it 'checks a given word’s spelling according to the specified dictionary' do
+        get '/dicts/en/check?text=colour'
+        last_response.should be_ok
+        last_response.headers['Content-Type'].should == 'application/json;charset=utf-8'
+        JSON.parse(last_response.body).should == [true]
+
+        get '/dicts/en_GB/check?text=colour'
+        last_response.should be_ok
+        last_response.headers['Content-Type'].should == 'application/json;charset=utf-8'
+        JSON.parse(last_response.body).should == [true]
+
+        get '/dicts/en_US/check?text=colour'
+        last_response.should be_ok
+        last_response.headers['Content-Type'].should == 'application/json;charset=utf-8'
+        JSON.parse(last_response.body).should == [false]
       end
 
     end
