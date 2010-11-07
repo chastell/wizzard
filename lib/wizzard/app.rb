@@ -11,7 +11,8 @@ module Wizzard
     end
 
     get '/dicts/:dict/autocorrect' do |dict|
-      [Aspell.new(dict).suggest(params['text']).first].to_json
+      spell = Aspell.new(dict)
+      [params['text'].split.map { |word| spell.suggest(word).first }.join(' ')].to_json
     end
 
     get '/dicts/:dict/check' do |dict|

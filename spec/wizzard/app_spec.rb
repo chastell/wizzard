@@ -65,6 +65,14 @@ module Wizzard
         last_response.should json_decode_to ['sanitize']
       end
 
+      it 'corrects a sentence’s spelling according to the specified dictionary' do
+        get '/dicts/en_GB/autocorrect?text=sanitised+aluminum'
+        last_response.should json_decode_to ['sanitised aluminium']
+
+        get '/dicts/en_US/autocorrect?text=sanitised+aluminum'
+        last_response.should json_decode_to ['sanitized aluminum']
+      end
+
     end
 
   end
