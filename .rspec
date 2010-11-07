@@ -1,1 +1,3 @@
 --colour
+--require rack/test
+--require ./lib/wizzard
