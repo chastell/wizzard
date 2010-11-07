@@ -40,6 +40,14 @@ module Wizzard
         last_response.should json_decode_to [false]
       end
 
+      it 'checks a sentence’s spelling according to the specified dictionary' do
+        get '/dicts/en_GB/check?text=colour+of+magic'
+        last_response.should json_decode_to [true]
+
+        get '/dicts/en_US/check?text=colour+of+magic'
+        last_response.should json_decode_to [false]
+      end
+
     end
 
   end

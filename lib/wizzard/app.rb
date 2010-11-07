@@ -11,7 +11,8 @@ module Wizzard
     end
 
     get '/dicts/:dict/check' do |dict|
-      [Aspell.new(dict).check(params['text'])].to_json
+      spell = Aspell.new(dict)
+      [params['text'].split.all? { |word| spell.check(word) }].to_json
     end
 
   end
