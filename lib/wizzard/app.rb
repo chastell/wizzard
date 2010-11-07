@@ -10,6 +10,10 @@ module Wizzard
       Aspell.list_dicts.map(&:code).uniq.to_json
     end
 
+    get '/dicts/:dict/autocorrect' do |dict|
+      [Aspell.new(dict).suggest(params['text']).first].to_json
+    end
+
     get '/dicts/:dict/check' do |dict|
       [Aspell.new(dict).list_misspelled([params['text']]).empty?].to_json
     end

@@ -55,6 +55,18 @@ module Wizzard
 
     end
 
+    context 'correcting queries' do
+
+      it 'corrects a given word’s spelling according to the specified dictionary' do
+        get '/dicts/en_GB/autocorrect?text=sanitize'
+        last_response.should json_decode_to ['sanitise']
+
+        get '/dicts/en_US/autocorrect?text=sanitise'
+        last_response.should json_decode_to ['sanitize']
+      end
+
+    end
+
   end
 
 end
