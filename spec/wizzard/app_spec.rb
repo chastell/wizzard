@@ -78,6 +78,11 @@ module Wizzard
         last_response.should json_decode_to ['sanitized aluminum']
       end
 
+      it 'suggests alternative spellings for a given word' do
+        get '/dicts/en_GB/suggest?text=rewolutionary'
+        last_response.should json_decode_to ['revolutionary', 'evolutionary', 'reflationary', "revolutionary's"]
+      end
+
     end
 
   end

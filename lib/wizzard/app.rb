@@ -23,6 +23,10 @@ module Wizzard
       Aspell.new(dict).list_misspelled([params['text']]).to_json
     end
 
+    get '/dicts/:dict/suggest' do |dict|
+      Aspell.new(dict).suggest(params['text']).to_json
+    end
+
   end
 
 end
