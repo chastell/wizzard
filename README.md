@@ -1,7 +1,7 @@
 Wizzard
 =======
 
-Wizzard¹ is a spell-checking and -correcting webservice.
+Wizzard¹ is a spell-checking and -correcting webservice, written for the [s3-e1 exercise](https://github.com/rmu/s3-e1) of [Ruby Mendicant University](http://university.rubymendicant.com).
 
 ¹ [obviously](http://en.wikipedia.org/wiki/Rincewind#Fictional_character_history)
 
