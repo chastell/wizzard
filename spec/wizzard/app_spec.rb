@@ -8,7 +8,7 @@ module Wizzard
       match do |actual|
         [
           actual.ok?,
-          actual.headers['Content-Type'] == 'application/json;charset=utf-8',
+          actual.headers['Content-Type'] == 'application/json',
           JSON.parse(actual.body) == expected,
         ].all?
       end
