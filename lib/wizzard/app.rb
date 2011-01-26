@@ -9,7 +9,7 @@ module Wizzard class App < Sinatra::Base
   end
 
   get '/dicts/:dict/autocorrect' do |dict|
-    spell = Aspell.new(dict)
+    spell = Aspell.new dict
     [params['text'].split.map { |word| spell.suggest(word).first }.join(' ')].to_json
   end
 
