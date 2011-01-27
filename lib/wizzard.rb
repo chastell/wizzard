@@ -2,4 +2,6 @@ require 'json'
 require 'raspell'
 require 'sinatra/base'
 
-require_relative 'wizzard/app'
+module Wizzard
+  autoload :App, 'wizzard/app'
+end
