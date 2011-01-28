@@ -27,4 +27,4 @@ Please refer to the [`spec/wizzard/app_spec.rb`](https://github.com/chastell/s3-
 
 ---
 
-© MMX Piotr Szotkowski <chastell@chastell.net>, licensed under AGPL 3 (see LICENCE)
+© MMX-MMXI Piotr Szotkowski <chastell@chastell.net>, licensed under AGPL 3 (see LICENCE)
